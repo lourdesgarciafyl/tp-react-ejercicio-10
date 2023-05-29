@@ -1,0 +1,14 @@
+#root{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #cb3ae1;
+  }
+  
+  #containerPrincipal{
+    flex-grow: 1;
+  }
+  #formDatos{
+    background-color: #d1a0d9;
+    padding: 20px;
+  }
