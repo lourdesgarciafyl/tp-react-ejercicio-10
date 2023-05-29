@@ -3,12 +3,15 @@ import { Form, Col, Row, Button, Card } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from 'sweetalert2'
 import BloquePeliculas from "./BloquePeliculas";
+import { v4 as uuidv4 } from 'uuid';
 
 const FormularioPeliculas = () =>{
     const [peliculas, setPeliculas] = useState([])
+    
     const { register, formState: {errors}, reset , handleSubmit} = useForm()
   
     const apretarEnviar = (data) => {
+      data.id = uuidv4()
       setPeliculas([...peliculas, data])
       Swal.fire(
         "Pelicula guardada correctamente",
@@ -18,10 +21,14 @@ const FormularioPeliculas = () =>{
       reset()
     }
 
+    const borrarPelicula = (id) => {
+        let copiaArray = peliculas.filter((pelicula) => pelicula.id !== id);
+        setPeliculas(copiaArray)
+    }
     return(
 
         <section>
-                    <Card className="my-3">
+           <Card className="my-3">
             <Card.Title className="text-center display-5 py-2">Administrador de peliculas</Card.Title>
             <hr />
             <Card.Body>
@@ -98,7 +105,7 @@ const FormularioPeliculas = () =>{
       </Form>
     </Card.Body>
     </Card>
-   <BloquePeliculas></BloquePeliculas>
+   <BloquePeliculas arrayPeliculas={peliculas} borrarPelicula={borrarPelicula}></BloquePeliculas>
     </section>
     )
 }
