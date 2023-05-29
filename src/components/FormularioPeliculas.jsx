@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Form, Col, Row, Button, Card } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from 'sweetalert2'
+import BloquePeliculas from "./BloquePeliculas";
 
 const FormularioPeliculas = () =>{
     const [peliculas, setPeliculas] = useState([])
@@ -18,7 +19,9 @@ const FormularioPeliculas = () =>{
     }
 
     return(
-        <Card className="my-3">
+
+        <section>
+                    <Card className="my-3">
             <Card.Title className="text-center display-5 py-2">Administrador de peliculas</Card.Title>
             <hr />
             <Card.Body>
@@ -95,6 +98,8 @@ const FormularioPeliculas = () =>{
       </Form>
     </Card.Body>
     </Card>
+   <BloquePeliculas></BloquePeliculas>
+    </section>
     )
 }
 
